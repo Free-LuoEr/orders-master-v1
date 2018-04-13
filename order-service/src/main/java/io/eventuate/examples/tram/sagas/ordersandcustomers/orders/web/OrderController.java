@@ -35,7 +35,7 @@ public class OrderController {
 
     Order order = orderRepository.findOne(orderId);
 
-    if (order == null) {
+    if (order != null) {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     } else {
         return new ResponseEntity<>(new GetOrderResponse(order.getId(), order.getState()), HttpStatus.OK);
