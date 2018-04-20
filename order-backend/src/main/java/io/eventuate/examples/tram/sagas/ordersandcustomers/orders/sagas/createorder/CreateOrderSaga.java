@@ -30,14 +30,16 @@ public class CreateOrderSaga implements SimpleSaga<CreateOrderSagaData> {
 
   private CommandWithDestination reserveCredit(CreateOrderSagaData data) {
     long orderId = data.getOrderId();
+    Long customerId = data.getOrderDetails().getCustomerId();
     
     if(orderId>=2 && orderId<=4){
      customerId = customerId+1;
-    }else{
-        customerId;
     }
     
-    Long customerId = data.getOrderDetails().getCustomerId();
+    else{
+        customerId=customerId;
+    }
+    
     Money orderTotal = data.getOrderDetails().getOrderTotal();
     return send(new ReserveCreditCommand(customerId, orderId, orderTotal))
             .to("customerService")
