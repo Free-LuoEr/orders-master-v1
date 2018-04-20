@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Access(AccessType.FIELD)
 public class Money {
 
-  public static final Money ZERO = new Money(0);
+  public static final Money ZERO = new Money(5);
   private BigDecimal amount;
 
   public Money() {
